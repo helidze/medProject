@@ -62,7 +62,7 @@ public class restTest {
     @Test
     public void loginWithIncorrectEmail(){
         given().
-                header("Content-Type", "application/json").
+                contentType("application/json").
                 header("Cache-Control", "no-cache").
                 body("{\n  \"email\": \"user@ad.min1\",\n  \"password\": \"1q2w3e4r\"\n}").
                 post(URI + "/Auth/Login").
@@ -76,7 +76,7 @@ public class restTest {
     @Test
     public void loginWithIncorrectPassword(){
         given().
-                header("Content-Type", "application/json").
+                contentType("application/json").
                 header("Cache-Control", "no-cache").
                 body("{\n  \"email\": \"user@ad.min\",\n  \"password\": \"1q2w3e4r1\"\n}").
                 post(URI + "/Auth/Login").
@@ -90,7 +90,7 @@ public class restTest {
     @Test
     public void newUserRegistrationWithExistEmail(){
         given().
-                header("Content-Type", "application/json").
+                contentType("application/json").
                 header("Cache-Control", "no-cache").
                 body("{\n" +
                         "  \"email\": \"string@string.com\",\n" +
@@ -111,7 +111,7 @@ public class restTest {
     public void newUserRegistration(){
         Date date = new Date();
         given().
-                header("Content-Type", "application/json").
+                contentType("application/json").
                 header("Cache-Control", "no-cache").
                 body("{\n" +
                         "  \"email\": " + "\""+date.getMinutes() + date.getSeconds() +date.getHours() + "@string.com\",\n" +
@@ -128,6 +128,58 @@ public class restTest {
                 log().body();
     }
 
+    @Test
+    public void resetPasswordTest(){
+        given().
+                contentType("application/json").
+                header("Cache-Control", "no-cache").
+                body("{\n" +
+                        "  \"email\": \"string@string.com\"\n" +
+                        "}").
+                post(URI + "/Auth/Recover").
+                then().
+                assertThat().
+                statusCode(200).
+                log().body();
+    }
 
+    @Test
+    public void getBlogTest(){
+        given().
+                contentType("application/json").
+                header("Cache-Control", "no-cache").
+                body("{}").
+                post(URI + "/Blog/Get").
+                then().
+                assertThat().
+                statusCode(200).
+                log().body();
+    }
+
+    @Test(description = "receiveOneBlogPostWithIncorrectId")
+    public void getBlogByIncorrectId(){
+        given().
+                contentType("application/json").
+                header("Cache-Control", "no-cache").
+                body("{\"id\": -1}").
+                post(URI + "/Blog/GetOne").
+                then().
+                assertThat().
+                statusCode(500).
+                assertThat().body(containsString("{\"code\":\"Undefined\",\"message\":\"Get Blog Error. Blog not exist with id -1\"}")).
+                log().all();
+    }
+
+    @Test(description = "receiveOneBlogPost")
+    public void getBlogById(){
+        given().
+                contentType("application/json").
+                header("Cache-Control", "no-cache").
+                body("{\"id\": 0}").
+                post(URI + "/Blog/GetOne").
+                then().
+                assertThat().
+                statusCode(200);
+    }
 }
 
