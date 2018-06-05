@@ -1,7 +1,5 @@
 package restApi;
 
-import io.restassured.specification.RequestSpecification;
-import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -9,11 +7,17 @@ import static org.hamcrest.CoreMatchers.containsString;
 
 public class restTest {
 
-    String token = given().
+    protected String URI = "https://dev.api.meds4sure.com/api/v1";
+    protected String URL = "https://med:medSite123@staging.meds4sure.com/";
+    String username = "";
+    String password = "";
+
+
+    protected String token = given().
             header("Content-Type", "application/json").
             header("Cache-Control", "no-cache").
             body("{\n  \"email\": \"user@ad.min\",\n  \"password\": \"1q2w3e4r\"\n}").
-            post("https://dev.api.meds4sure.com/api/v1/Auth/Login").
+            post(URI + "/Auth/Login").
             then().
             extract().path("token").toString();
 
@@ -21,7 +25,7 @@ public class restTest {
     @Test
     public void testStatusCode(){
         given().
-                get("https://med:medSite123@staging.meds4sure.com/").
+                get(URL).
                 then().
                 assertThat().
                 statusCode(200).
@@ -29,14 +33,13 @@ public class restTest {
     }
 
     @Test
-    public void testOrderWallpicsExist(){
+    public void testMed4SureExist(){
         given().
-                get("https://med:medSite123@staging.meds4sure.com/").
+                get(URL).
                 then().
                 assertThat().
                 body(containsString("Meds4Sure")).log().all();
     }
-
 
     @Test
     public void med4Auth(){
@@ -44,13 +47,11 @@ public class restTest {
                 contentType("application/json").
                 header("Authorization", "Bearer "+token).
                 header("Cache-Control", "no-cache").
-                post("https://dev.api.meds4sure.com/api/v1/User/Get").
+                post(URI + "/User/Get").
                 then().
                 assertThat().
                 statusCode(200).
                 log().all();
-
-
     }
 }
 
