@@ -35,7 +35,7 @@ public class restTest {
     }
 
     @Test
-    public void testMed4SureExist(){
+    public void testMed4SureTextExist(){
         given().
                 get(URL).
                 then().
@@ -107,26 +107,26 @@ public class restTest {
                 log().body();
     }
 
-//    @Test
-//    public void newUserRegistration(){
-//        Date date = new Date();
-//        given().
-//                header("Content-Type", "application/json").
-//                header("Cache-Control", "no-cache").
-//                body("{\n" +
-//                        "  \"email\": \"string@string.com\",\n" +
-//                        "  \"password\": \"string\",\n" +
-//                        "  \"firstName\": \"string\",\n" +
-//                        "  \"lastName\": \"string\",\n" +
-//                        "  \"isSubscribe\": true\n" +
-//                        "}").
-//                post(URI + "/Auth/Registration").
-//                then().
-//                assertThat().
-//                statusCode(406).
-//                body(containsString("{\"code\":\"Invalid\",\"message\":\"Email already exist\"}")).
-//                log().body();
-//    }
+    @Test
+    public void newUserRegistration(){
+        Date date = new Date();
+        given().
+                header("Content-Type", "application/json").
+                header("Cache-Control", "no-cache").
+                body("{\n" +
+                        "  \"email\": " + "\""+date.getMinutes() + date.getSeconds() +date.getHours() + "@string.com\",\n" +
+                        "  \"password\": \"string\",\n" +
+                        "  \"firstName\": \"string\",\n" +
+                        "  \"lastName\": \"string\",\n" +
+                        "  \"isSubscribe\": true\n" +
+                        "}").
+                post(URI + "/Auth/Registration").
+                then().
+                assertThat().
+                statusCode(200).
+                body(containsString("token")).
+                log().body();
+    }
 
 
 }
