@@ -1,0 +1,41 @@
+{
+
+  "token": "string",
+  "model": {
+    "id": 0,
+    "orderNumber": 0,
+    "createdAt": 0,
+    "shipTax": 0,
+    "price": 0,
+    "orderStatus": "Ordered",
+    "shipProfile": {
+      "firstName": "string",
+      "lastName": "string",
+      "address": "string",
+      "city": "string",
+      "state": "string",
+      "country": "string",
+      "zip": "string",
+      "phone": "string"
+    },
+    "billingProfile": {
+      "address": "string",
+      "city": "string",
+      "state": "string",
+      "country": "string",
+      "zip": "string"
+    },
+    "orderProducts": [
+      {
+        "product": "string",
+        "category": "string",
+        "price": 0,
+        "strength": "string",
+        "packCount": 0,
+        "pack": 0,
+        "packType": "Pcs",
+        "form": "Undefined"
+      }
+    ]
+  }
+}

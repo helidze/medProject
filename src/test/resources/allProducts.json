@@ -1,0 +1,61 @@
+{
+  "model": {
+    "id": 0,
+    "name": "string",
+    "text": "string",
+    "cover": "string",
+    "isHot": true,
+    "rating": 0,
+    "reviews": [
+      {
+        "user": {
+          "id": 0,
+          "firstName": "string",
+          "lastName": "string"
+        },
+        "rating": 0,
+        "title": "string",
+        "comment": "string"
+      }
+    ],
+    "category": {
+      "id": 0,
+      "name": "string",
+      "title": "string",
+      "parentCategoryId": 0,
+      "updatedAt": 0
+    },
+    "productDetails": [
+      {
+        "id": 0,
+        "cover": "string",
+        "pack": 0,
+        "packType": "Pcs",
+        "form": "Undefined",
+        "pillPrice": 0,
+        "strength": [
+          {
+            "activeSubstanceId": 0,
+            "id": 0,
+            "strength": 0,
+            "type": "Undefined"
+          }
+        ],
+        "detailsDiscount": {
+          "pillPriceDiscount": 0,
+          "finishAt": 0,
+          "updatedAt": 0,
+          "id": 0
+        }
+      }
+    ],
+    "activeSubstances": [
+      {
+        "id": 0,
+        "name": "string"
+      }
+    ],
+    "createdAt": 0,
+    "updatedAt": 0
+  }
+}

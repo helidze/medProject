@@ -1,0 +1,29 @@
+{
+  "user": {
+    "id": 0,
+    "email": "string",
+    "role": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "updatedAt": 0
+  },
+  "billingProfile": {
+    "updatedAt": 0,
+    "address": "string",
+    "city": "string",
+    "state": "string",
+    "country": "string",
+    "zip": "string"
+  },
+  "shipProfile": {
+    "updatedAt": 0,
+    "firstName": "string",
+    "lastName": "string",
+    "address": "string",
+    "city": "string",
+    "state": "string",
+    "country": "string",
+    "zip": "string",
+    "phone": "string"
+  }
+}

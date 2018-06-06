@@ -1,0 +1,23 @@
+{
+  "collection": [
+    {
+      "category": {
+        "id": 0,
+        "name": "string",
+        "title": "string",
+        "parentCategoryId": 0,
+        "updatedAt": 0
+      },
+      "subCategories": [
+        {
+          "id": 0,
+          "name": "string",
+          "title": "string",
+          "parentCategoryId": 0,
+          "updatedAt": 0
+        }
+      ]
+    }
+  ],
+  "count": 0
+}

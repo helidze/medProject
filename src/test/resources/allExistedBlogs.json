@@ -1,0 +1,12 @@
+{
+  "collection": [
+    {
+      "id": 0,
+      "title": "string",
+      "subtitle": "string",
+      "context": "string",
+      "createdAt": 0
+    }
+  ],
+  "count": 0
+}
