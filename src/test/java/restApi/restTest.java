@@ -121,8 +121,8 @@ public class restTest {
                 body("{\n" +
                         "  \"email\": " + "\""+date.getMinutes() + date.getSeconds() +date.getHours() + "@string.com\",\n" +
                         "  \"password\": \"string\",\n" +
-                        "  \"firstName\": \"string\",\n" +
-                        "  \"lastName\": \"string\",\n" +
+                        "  \"firstName\": \"autoTestByRest\",\n" +
+                        "  \"lastName\": \"autoTestByRest\",\n" +
                         "  \"isSubscribe\": true\n" +
                         "}").
                 post(URI + "/Auth/Registration").
