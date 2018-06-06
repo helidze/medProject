@@ -1,0 +1,11 @@
+{
+  "user": {
+    "id": 0,
+    "email": "string",
+    "role": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "updatedAt": 0
+  },
+  "token": "string"
+}

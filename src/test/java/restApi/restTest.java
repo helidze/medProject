@@ -5,12 +5,10 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.hasItems;
 
 public class restTest {
 
@@ -130,6 +128,7 @@ public class restTest {
                 assertThat().
                 statusCode(200).
                 body(containsString("token")).
+                body(matchesJsonSchemaInClasspath("registrationUserSchema.json")).
                 log().body();
     }
 
@@ -197,7 +196,7 @@ public class restTest {
                 post(URI +"/Category/Get").
                 then().
                 assertThat().
-                statusCode(200).
+                body("collection.category.title", hasItems("Bronchodilators","Cancer","Women's Health")).
                 log().body();
     }
 
