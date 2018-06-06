@@ -1,8 +1,12 @@
 package restApi;
 
+import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
@@ -175,11 +179,87 @@ public class restTest {
         given().
                 contentType("application/json").
                 header("Cache-Control", "no-cache").
-                body("{\"id\": 0}").
+                body("{\"id\": 1}").
                 post(URI + "/Blog/GetOne").
                 then().
                 assertThat().
-                statusCode(200);
+                statusCode(200).
+                log().body();
     }
+
+    @Test
+    public void getCategories(){
+        given().
+                contentType("application/json").
+                post(URI +"/Category/Get").
+                then().
+                assertThat().
+                statusCode(200).
+                log().body();
+    }
+
+    @Test
+    public void getServerTime(){
+        given().
+                post(URI + "/General/GetTime").
+                then().
+                assertThat().
+                statusCode(200).
+                log().body();
+    }
+
+    @Test
+    public void getSettings(){
+        given().
+                post(URI + "/General/GetSetting").
+                then().
+                assertThat().
+                statusCode(200).
+                log().body();
+    }
+
+    @Test
+    public void createOrder(){
+        String inputOrderDetails = "{\n" +
+                "  \"email\": \"user@adm.min\",\n" +
+                "  \"shipProfile\": {\n" +
+                "    \"firstName\": \"string\",\n" +
+                "    \"lastName\": \"string\",\n" +
+                "    \"address\": \"string\",\n" +
+                "    \"city\": \"string\",\n" +
+                "    \"state\": \"string\",\n" +
+                "    \"country\": \"string\",\n" +
+                "    \"zip\": \"string\",\n" +
+                "    \"phone\": \"string\"\n" +
+                "  },\n" +
+                "  \"billingProfile\": {\n" +
+                "    \"address\": \"string\",\n" +
+                "    \"city\": \"string\",\n" +
+                "    \"state\": \"string\",\n" +
+                "    \"country\": \"string\",\n" +
+                "    \"zip\": \"string\"\n" +
+                "  },\n" +
+                "  \"price\": 0.21,\n" +
+                "  \"products\": [\n" +
+                "    {\n" +
+                "      \"productId\": 1,\n" +
+                "      \"productDetailsId\": 1,\n" +
+                "      \"packCount\": 1\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}";
+        given().
+                contentType(ContentType.JSON).
+                header("Authorization", "Bearer "+token)
+                .body(inputOrderDetails)
+                .when()
+                .post(URI + "/Order/CreateOrder")
+                .then().
+                assertThat().
+                statusCode(200).
+                log().body();
+
+    }
+    
 }
 
