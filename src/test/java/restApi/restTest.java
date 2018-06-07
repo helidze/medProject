@@ -319,6 +319,23 @@ public class restTest {
                 log().body();
     }
 
+    @Test(description = "without AuthToken + status code == 406")
+    public void updateProfileInfoNegativeTest(){
+        given().
+                contentType("application/json").
+                header("Cache-Control", "no-cache").
+                body("{\n" +
+                        "  \"email\": \"user@ad.min\",\n" +
+                        "  \"firstName\": \"string\",\n" +
+                        "  \"lastName\": \"string\"\n" +
+                        "}").
+                post(URI + "/User/UpdateProfile").
+                then().
+                assertThat().
+                statusCode(406).
+                log().body();
+    }
+
     @Test
     public void updateBillingProfileInfo(){
         given().
@@ -337,6 +354,25 @@ public class restTest {
                 assertThat().
                 statusCode(200).
                 body(matchesJsonSchemaInClasspath("updateBillingProfile.json")).
+                log().body();
+    }
+
+    @Test(description = "without AuthToken + status code == 406")
+    public void updateBillingProfileInfoNegativeTest(){
+        given().
+                contentType("application/json").
+                header("Cache-Control", "no-cache").
+                body("{\n" +
+                        "  \"address\": \"string\",\n" +
+                        "  \"city\": \"string\",\n" +
+                        "  \"state\": \"string\",\n" +
+                        "  \"country\": \"string\",\n" +
+                        "  \"zip\": \"string\"\n" +
+                        "}").
+                post(URI + "/User/UpdateBillingProfile").
+                then().
+                assertThat().
+                statusCode(406).
                 log().body();
     }
 
@@ -362,6 +398,28 @@ public class restTest {
                 statusCode(200).
                 body(matchesJsonSchemaInClasspath("updateShipProfile.json")).
                 log().body();
+    }
+
+    @Test(description = "without AuthToken + status code == 406")
+    public void updateShipProfileInfoNegativeTest(){
+        given().
+                contentType("application/json").
+                header("Cache-Control", "no-cache").
+                body("{\n" +
+                        "  \"firstName\": \"string\",\n" +
+                        "  \"lastName\": \"string\",\n" +
+                        "  \"address\": \"string\",\n" +
+                        "  \"city\": \"string\",\n" +
+                        "  \"state\": \"string\",\n" +
+                        "  \"country\": \"string\",\n" +
+                        "  \"zip\": \"string\",\n" +
+                        "  \"phone\": \"string\"\n" +
+                        "}").
+                post(URI + "/User/UpdateShipProfile").
+                then().
+                assertThat().
+                statusCode(406).
+                log().all();
     }
 
     @Test
@@ -393,6 +451,23 @@ public class restTest {
                 assertThat().
                 statusCode(200).
                 body(matchesJsonSchemaInClasspath("updateSubscribe.json")).
+                log().body();
+    }
+
+    @Test(description = "incorrect value + status code == 406")
+    public void updateUserSubscribeNegativeTest(){
+        given().
+                contentType("application/json").
+                header("Authorization", "Bearer "+token).
+                header("Cache-Control", "no-cache").
+                body("{\n" +
+                        "  \"isEnableGeneral\": a,\n" +
+                        "  \"isEnableDiscount\": false\n" +
+                        "}").
+                post(URI + "/User/UpdateSubscribe").
+                then().
+                assertThat().
+                statusCode(406).
                 log().body();
     }
 
