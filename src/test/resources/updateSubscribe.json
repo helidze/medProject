@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "model": {
+      "type": "object",
+      "properties": {
+        "isEnableGeneral": {
+          "type": "boolean"
+        },
+        "isEnableDiscount": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "isEnableGeneral",
+        "isEnableDiscount"
+      ]
+    }
+  },
+  "required": [
+    "model"
+  ]
+}
