@@ -84,6 +84,25 @@
             },
             "updatedAt": {
               "type": "integer"
+            },
+            "seoInformation": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "keywords": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "title",
+                "description",
+                "keywords"
+              ]
             }
           },
           "required": [
@@ -91,7 +110,8 @@
             "name",
             "title",
             "parentCategoryId",
-            "updatedAt"
+            "updatedAt",
+            "seoInformation"
           ]
         },
         "productDetails": {
@@ -203,8 +223,24 @@
             }
           ]
         },
-        "createdAt": {
-          "type": "integer"
+        "seoInformation": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "keywords": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "description",
+            "keywords"
+          ]
         },
         "updatedAt": {
           "type": "integer"
@@ -221,7 +257,7 @@
         "category",
         "productDetails",
         "activeSubstances",
-        "createdAt",
+        "seoInformation",
         "updatedAt"
       ]
     }

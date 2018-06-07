@@ -50,20 +50,6 @@ public class restTest {
     }
 
     @Test
-    public void testUserProfileInfo(){
-        given().
-                contentType("application/json").
-                header("Authorization", "Bearer "+token).
-                header("Cache-Control", "no-cache").
-                post(URI + "/User/Get").
-                then().
-                assertThat().
-                statusCode(200).
-                body(matchesJsonSchemaInClasspath("userProfileInfo.json")).
-                log().body();
-    }
-
-    @Test
     public void loginWithIncorrectEmail(){
         given().
                 contentType("application/json").
@@ -171,8 +157,8 @@ public class restTest {
                 post(URI + "/Blog/GetOne").
                 then().
                 assertThat().
-                statusCode(500).
-                assertThat().body(containsString("{\"code\":\"Undefined\",\"message\":\"Get Blog Error. Blog not exist with id -1\"}")).
+                statusCode(406).
+                assertThat().body(containsString("{\"code\":\"NotFound\",\"message\":\"Get Blog Error. Blog not exist with id -1\"}")).
                 log().all();
     }
 
@@ -199,7 +185,7 @@ public class restTest {
                 assertThat().
                 statusCode(200).
                 body(matchesJsonSchemaInClasspath("allExistedCategories.json")).
-                body("collection.category.title", hasItems("Bronchodilators","Cancer","Women's Health")).
+                body("collection.title", hasItems("Bronchodilators","Cancer","Women's Health")).
                 log().body();
     }
 
@@ -295,9 +281,121 @@ public class restTest {
                 post(URI + "/Product/GetOne").
                 then().
                 assertThat().
-//                body(matchesJsonSchemaInClasspath("getProductById.json")).
                 statusCode(200).
+               body(matchesJsonSchemaInClasspath("getProductById.json")).
                 log().body();
     }
+
+    @Test
+    public void testUserProfileInfo(){
+        given().
+                contentType("application/json").
+                header("Authorization", "Bearer "+token).
+                header("Cache-Control", "no-cache").
+                post(URI + "/User/Get").
+                then().
+                assertThat().
+                statusCode(200).
+                body(matchesJsonSchemaInClasspath("userProfileInfo.json")).
+                log().body();
+    }
+
+    @Test
+    public void updateProfileInfo(){
+        given().
+                contentType("application/json").
+                header("Authorization", "Bearer "+token).
+                header("Cache-Control", "no-cache").
+                body("{\n" +
+                        "  \"email\": \"user@ad.min\",\n" +
+                        "  \"firstName\": \"string\",\n" +
+                        "  \"lastName\": \"string\"\n" +
+                        "}").
+                post(URI + "/User/UpdateProfile").
+                then().
+                assertThat().
+                statusCode(200).
+                body(matchesJsonSchemaInClasspath("updateProfile.json")).
+                log().body();
+    }
+
+    @Test
+    public void updateBillingProfileInfo(){
+        given().
+                contentType("application/json").
+                header("Authorization", "Bearer "+token).
+                header("Cache-Control", "no-cache").
+                body("{\n" +
+                        "  \"address\": \"string\",\n" +
+                        "  \"city\": \"string\",\n" +
+                        "  \"state\": \"string\",\n" +
+                        "  \"country\": \"string\",\n" +
+                        "  \"zip\": \"string\"\n" +
+                        "}").
+                post(URI + "/User/UpdateBillingProfile").
+                then().
+                assertThat().
+                statusCode(200).
+                body(matchesJsonSchemaInClasspath("updateBillingProfile.json")).
+                log().body();
+    }
+
+    @Test
+    public void updateShipProfileInfo(){
+        given().
+                contentType("application/json").
+                header("Authorization", "Bearer "+token).
+                header("Cache-Control", "no-cache").
+                body("{\n" +
+                        "  \"firstName\": \"string\",\n" +
+                        "  \"lastName\": \"string\",\n" +
+                        "  \"address\": \"string\",\n" +
+                        "  \"city\": \"string\",\n" +
+                        "  \"state\": \"string\",\n" +
+                        "  \"country\": \"string\",\n" +
+                        "  \"zip\": \"string\",\n" +
+                        "  \"phone\": \"string\"\n" +
+                        "}").
+                post(URI + "/User/UpdateShipProfile").
+                then().
+                assertThat().
+                statusCode(200).
+                body(matchesJsonSchemaInClasspath("updateShipProfile.json")).
+                log().body();
+    }
+
+    @Test
+    public void getUserSubscribe(){
+        given().
+                contentType("application/json").
+                header("Authorization", "Bearer "+token).
+                header("Cache-Control", "no-cache").
+                post(URI + "/User/GetSubscribe").
+                then().
+                assertThat().
+                statusCode(200).
+                body(matchesJsonSchemaInClasspath("updateSubscribe.json")).
+                log().body();
+    }
+
+    @Test
+    public void updateUserSubscribe(){
+        given().
+                contentType("application/json").
+                header("Authorization", "Bearer "+token).
+                header("Cache-Control", "no-cache").
+                body("{\n" +
+                        "  \"isEnableGeneral\": false,\n" +
+                        "  \"isEnableDiscount\": false\n" +
+                        "}").
+                post(URI + "/User/UpdateSubscribe").
+                then().
+                assertThat().
+                statusCode(200).
+                body(matchesJsonSchemaInClasspath("updateSubscribe.json")).
+                log().body();
+    }
+
+
 }
 

@@ -8,69 +8,48 @@
         {
           "type": "object",
           "properties": {
-            "category": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "parentCategoryId": {
+              "type": ["integer","null"]
+            },
+            "updatedAt": {
+              "type": "integer"
+            },
+            "seoInformation": {
               "type": "object",
               "properties": {
-                "id": {
-                  "type": "integer"
-                },
-                "name": {
-                  "type": "string"
-                },
                 "title": {
                   "type": "string"
                 },
-                "parentCategoryId": {
-                  "type": ["integer","null"]
+                "description": {
+                  "type": "string"
                 },
-                "updatedAt": {
-                  "type": "integer"
+                "keywords": {
+                  "type": "string"
                 }
               },
               "required": [
-                "id",
-                "name",
                 "title",
-                "parentCategoryId",
-                "updatedAt"
-              ]
-            },
-            "subCategories": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "title": {
-                      "type": "string"
-                    },
-                    "parentCategoryId": {
-                      "type": "integer"
-                    },
-                    "updatedAt": {
-                      "type": "integer"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "name",
-                    "title",
-                    "parentCategoryId",
-                    "updatedAt"
-                  ]
-                }
+                "description",
+                "keywords"
               ]
             }
           },
           "required": [
-            "category",
-            "subCategories"
+            "id",
+            "name",
+            "title",
+            "parentCategoryId",
+            "updatedAt",
+            "seoInformation"
           ]
         }
       ]

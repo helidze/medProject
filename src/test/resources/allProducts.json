@@ -2,71 +2,10 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "model": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        },
-        "cover": {
-          "type": "string"
-        },
-        "isHot": {
-          "type": "boolean"
-        },
-        "rating": {
-          "type": "integer"
-        },
-        "reviews": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "user": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "integer"
-                  },
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "id",
-                  "firstName",
-                  "lastName"
-                ]
-              },
-              "rating": {
-                "type": "integer"
-              },
-              "title": {
-                "type": "string"
-              },
-              "comment": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "user",
-              "rating",
-              "title",
-              "comment"
-            ]
-          },
-          "additionalItems": true
-        },
-        "category": {
+    "collection": {
+      "type": "array",
+      "items": [
+        {
           "type": "object",
           "properties": {
             "id": {
@@ -75,11 +14,173 @@
             "name": {
               "type": "string"
             },
-            "title": {
+            "cover": {
               "type": "string"
             },
-            "parentCategoryId": {
+            "isHot": {
+              "type": "boolean"
+            },
+            "rating": {
               "type": "integer"
+            },
+            "reviewsCount": {
+              "type": "integer"
+            },
+            "category": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "parentCategoryId": {
+                  "type": "integer"
+                },
+                "updatedAt": {
+                  "type": "integer"
+                },
+                "seoInformation": {
+                  "type": ["object","null"],
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "keywords": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "description",
+                    "keywords"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "title",
+                "parentCategoryId",
+                "updatedAt",
+                "seoInformation"
+              ]
+            },
+            "productDetails": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "cover": {
+                      "type": ["string", "null"]
+                    },
+                    "pack": {
+                      "type": "integer"
+                    },
+                    "packType": {
+                      "type": "string"
+                    },
+                    "form": {
+                      "type": "string"
+                    },
+                    "pillPrice": {
+                      "type": "integer"
+                    },
+                    "strength": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "activeSubstanceId": {
+                              "type": "integer"
+                            },
+                            "id": {
+                              "type": "integer"
+                            },
+                            "strength": {
+                              "type": "integer"
+                            },
+                            "type": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "activeSubstanceId",
+                            "id",
+                            "strength",
+                            "type"
+                          ]
+                        }
+                      ]
+                    },
+                    "detailsDiscount": {
+                      "type": ["object", "null"],
+                      "properties": {
+                        "pillPriceDiscount": {
+                          "type": "integer"
+                        },
+                        "finishAt": {
+                          "type": "integer"
+                        },
+                        "updatedAt": {
+                          "type": "integer"
+                        },
+                        "id": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "pillPriceDiscount",
+                        "finishAt",
+                        "updatedAt",
+                        "id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "cover",
+                    "pack",
+                    "packType",
+                    "form",
+                    "pillPrice",
+                    "strength",
+                    "detailsDiscount"
+                  ]
+                }
+              ]
+            },
+            "activeSubstances": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name"
+                  ]
+                }
+              ]
             },
             "updatedAt": {
               "type": "integer"
@@ -88,141 +189,24 @@
           "required": [
             "id",
             "name",
-            "title",
-            "parentCategoryId",
+            "cover",
+            "isHot",
+            "rating",
+            "reviewsCount",
+            "category",
+            "productDetails",
+            "activeSubstances",
             "updatedAt"
           ]
-        },
-        "productDetails": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "cover": {
-                "type": "string"
-              },
-              "pack": {
-                "type": "integer"
-              },
-              "packType": {
-                "type": "string"
-              },
-              "form": {
-                "type": "string"
-              },
-              "pillPrice": {
-                "type": "integer"
-              },
-              "strength": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "activeSubstanceId": {
-                      "type": "integer"
-                    },
-                    "id": {
-                      "type": "integer"
-                    },
-                    "strength": {
-                      "type": "integer"
-                    },
-                    "type": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "activeSubstanceId",
-                    "id",
-                    "strength",
-                    "type"
-                  ]
-                },
-                "additionalItems": true
-              },
-              "detailsDiscount": {
-                "type": "object",
-                "properties": {
-                  "pillPriceDiscount": {
-                    "type": "integer"
-                  },
-                  "finishAt": {
-                    "type": "integer"
-                  },
-                  "updatedAt": {
-                    "type": "integer"
-                  },
-                  "id": {
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "pillPriceDiscount",
-                  "finishAt",
-                  "updatedAt",
-                  "id"
-                ]
-              }
-            },
-            "required": [
-              "id",
-              "cover",
-              "pack",
-              "packType",
-              "form",
-              "pillPrice",
-              "strength",
-              "detailsDiscount"
-            ]
-          },
-          "additionalItems": true
-        },
-        "activeSubstances": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "name": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "id",
-              "name"
-            ]
-          },
-          "additionalItems": true
-        },
-        "createdAt": {
-          "type": "integer"
-        },
-        "updatedAt": {
-          "type": "integer"
         }
-      },
-      "required": [
-        "id",
-        "name",
-        "text",
-        "cover",
-        "isHot",
-        "rating",
-        "reviews",
-        "category",
-        "productDetails",
-        "activeSubstances",
-        "createdAt",
-        "updatedAt"
       ]
+    },
+    "count": {
+      "type": "integer"
     }
   },
   "required": [
-    "model"
+    "collection",
+    "count"
   ]
 }
