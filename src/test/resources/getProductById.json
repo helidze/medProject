@@ -80,13 +80,13 @@
               "type": "string"
             },
             "parentCategoryId": {
-              "type": "integer"
+              "type": ["integer", "null"]
             },
             "updatedAt": {
               "type": "integer"
             },
             "seoInformation": {
-              "type": "object",
+              "type": ["object", "null"],
               "properties": {
                 "title": {
                   "type": "string"
@@ -124,7 +124,7 @@
                   "type": "integer"
                 },
                 "cover": {
-                  "type": "string"
+                  "type": ["string", "null"]
                 },
                 "pack": {
                   "type": "integer"
@@ -167,7 +167,7 @@
                   ]
                 },
                 "detailsDiscount": {
-                  "type": "object",
+                  "type": ["object", "null"],
                   "properties": {
                     "pillPriceDiscount": {
                       "type": "integer"
@@ -224,7 +224,7 @@
           ]
         },
         "seoInformation": {
-          "type": "object",
+          "type": ["object", "null"],
           "properties": {
             "title": {
               "type": "string"
