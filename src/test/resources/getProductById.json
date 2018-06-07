@@ -21,7 +21,7 @@
           "type": "boolean"
         },
         "rating": {
-          "type": "integer"
+          "type": "number"
         },
         "reviews": {
           "type": "array",
@@ -127,7 +127,7 @@
                   "type": ["string", "null"]
                 },
                 "pack": {
-                  "type": "integer"
+                  "type": "number"
                 },
                 "packType": {
                   "type": "string"
@@ -136,7 +136,7 @@
                   "type": "string"
                 },
                 "pillPrice": {
-                  "type": "integer"
+                  "type": "number"
                 },
                 "strength": {
                   "type": "array",
@@ -151,7 +151,7 @@
                           "type": "integer"
                         },
                         "strength": {
-                          "type": "integer"
+                          "type": "number"
                         },
                         "type": {
                           "type": "string"

@@ -14,17 +14,61 @@
             "name": {
               "type": "string"
             },
-            "cover": {
+            "text": {
               "type": "string"
+            },
+            "cover": {
+              "type": ["string", "null"]
             },
             "isHot": {
               "type": "boolean"
             },
             "rating": {
-              "type": "integer"
+              "type": "number"
             },
-            "reviewsCount": {
-              "type": "integer"
+            "reviews": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "firstName": {
+                          "type": "string"
+                        },
+                        "lastName": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "firstName",
+                        "lastName"
+                      ]
+                    },
+                    "rating": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "comment": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "user",
+                    "rating",
+                    "title",
+                    "comment"
+                  ]
+                }
+              ]
             },
             "category": {
               "type": "object",
@@ -38,6 +82,9 @@
                 "title": {
                   "type": "string"
                 },
+                "inMenu": {
+                  "type": "boolean"
+                },
                 "parentCategoryId": {
                   "type": "integer"
                 },
@@ -45,7 +92,7 @@
                   "type": "integer"
                 },
                 "seoInformation": {
-                  "type": ["object","null"],
+                  "type": ["object", "null"],
                   "properties": {
                     "title": {
                       "type": "string"
@@ -68,6 +115,7 @@
                 "id",
                 "name",
                 "title",
+                "inMenu",
                 "parentCategoryId",
                 "updatedAt",
                 "seoInformation"
@@ -86,7 +134,7 @@
                       "type": ["string", "null"]
                     },
                     "pack": {
-                      "type": "integer"
+                      "type": "number"
                     },
                     "packType": {
                       "type": "string"
@@ -95,7 +143,7 @@
                       "type": "string"
                     },
                     "pillPrice": {
-                      "type": "integer"
+                      "type": "number"
                     },
                     "strength": {
                       "type": "array",
@@ -110,7 +158,7 @@
                               "type": "integer"
                             },
                             "strength": {
-                              "type": "integer"
+                              "type": "number"
                             },
                             "type": {
                               "type": "string"
@@ -182,6 +230,25 @@
                 }
               ]
             },
+            "seoInformation": {
+              "type": ["object", "null"],
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "keywords": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "title",
+                "description",
+                "keywords"
+              ]
+            },
             "updatedAt": {
               "type": "integer"
             }
@@ -189,13 +256,15 @@
           "required": [
             "id",
             "name",
+            "text",
             "cover",
             "isHot",
             "rating",
-            "reviewsCount",
+            "reviews",
             "category",
             "productDetails",
             "activeSubstances",
+            "seoInformation",
             "updatedAt"
           ]
         }
