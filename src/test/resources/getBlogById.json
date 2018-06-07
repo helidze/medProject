@@ -2,43 +2,35 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "user": {
+    "model": {
       "type": "object",
       "properties": {
         "id": {
           "type": "integer"
         },
-        "email": {
+        "title": {
           "type": "string"
         },
-        "role": {
+        "subtitle": {
           "type": "string"
         },
-        "firstName": {
+        "context": {
           "type": "string"
         },
-        "lastName": {
-          "type": "string"
-        },
-        "updatedAt": {
+        "createdAt": {
           "type": "integer"
         }
       },
       "required": [
         "id",
-        "email",
-        "role",
-        "firstName",
-        "lastName",
-        "updatedAt"
+        "title",
+        "subtitle",
+        "context",
+        "createdAt"
       ]
-    },
-    "token": {
-      "type": "string"
     }
   },
   "required": [
-    "user",
-    "token"
+    "model"
   ]
 }

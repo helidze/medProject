@@ -1,41 +1,157 @@
 {
-
-  "token": "string",
-  "model": {
-    "id": 0,
-    "orderNumber": 0,
-    "createdAt": 0,
-    "shipTax": 0,
-    "price": 0,
-    "orderStatus": "Ordered",
-    "shipProfile": {
-      "firstName": "string",
-      "lastName": "string",
-      "address": "string",
-      "city": "string",
-      "state": "string",
-      "country": "string",
-      "zip": "string",
-      "phone": "string"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": ["string","null"]
     },
-    "billingProfile": {
-      "address": "string",
-      "city": "string",
-      "state": "string",
-      "country": "string",
-      "zip": "string"
-    },
-    "orderProducts": [
-      {
-        "product": "string",
-        "category": "string",
-        "price": 0,
-        "strength": "string",
-        "packCount": 0,
-        "pack": 0,
-        "packType": "Pcs",
-        "form": "Undefined"
-      }
-    ]
-  }
+    "model": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "orderNumber": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "integer"
+        },
+        "shipTax": {
+          "type": "integer"
+        },
+        "price": {
+          "type": "integer"
+        },
+        "orderStatus": {
+          "type": "string"
+        },
+        "shipProfile": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "zip": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "firstName",
+            "lastName",
+            "address",
+            "city",
+            "state",
+            "country",
+            "zip",
+            "phone"
+          ]
+        },
+        "billingProfile": {
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "zip": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "address",
+            "city",
+            "state",
+            "country",
+            "zip"
+          ]
+        },
+        "orderProducts": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "product": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "integer"
+                },
+                "strength": {
+                  "type": "string"
+                },
+                "packCount": {
+                  "type": "integer"
+                },
+                "pack": {
+                  "type": "integer"
+                },
+                "packType": {
+                  "type": "string"
+                },
+                "form": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "product",
+                "category",
+                "price",
+                "strength",
+                "packCount",
+                "pack",
+                "packType",
+                "form"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "orderNumber",
+        "createdAt",
+        "shipTax",
+        "price",
+        "orderStatus",
+        "shipProfile",
+        "billingProfile",
+        "orderProducts"
+      ]
+    }
+  },
+  "required": [
+    "token",
+    "model"
+  ]
 }

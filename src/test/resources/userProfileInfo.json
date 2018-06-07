@@ -1,29 +1,116 @@
 {
-  "user": {
-    "id": 0,
-    "email": "string",
-    "role": "string",
-    "firstName": "string",
-    "lastName": "string",
-    "updatedAt": 0
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "user": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "email": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "email",
+        "role",
+        "firstName",
+        "lastName",
+        "updatedAt"
+      ]
+    },
+    "billingProfile": {
+      "type": "object",
+      "properties": {
+        "updatedAt": {
+          "type": "integer"
+        },
+        "address": {
+          "type": ["string","null"]
+        },
+        "city": {
+          "type": ["string","null"]
+        },
+        "state": {
+          "type": ["string","null"]
+        },
+        "country": {
+          "type": ["string","null"]
+        },
+        "zip": {
+          "type": ["string","null"]
+        }
+      },
+      "required": [
+        "updatedAt",
+        "address",
+        "city",
+        "state",
+        "country",
+        "zip"
+      ]
+    },
+    "shipProfile": {
+      "type": "object",
+      "properties": {
+        "updatedAt": {
+          "type": "integer"
+        },
+        "firstName": {
+          "type": ["string","null"]
+        },
+        "lastName": {
+          "type": ["string","null"]
+        },
+        "address": {
+          "type": ["string","null"]
+        },
+        "city": {
+          "type": ["string","null"]
+        },
+        "state": {
+          "type": ["string","null"]
+        },
+        "country": {
+          "type": ["string","null"]
+        },
+        "zip": {
+          "type": ["string","null"]
+        },
+        "phone": {
+          "type": ["string","null"]
+        }
+      },
+      "required": [
+        "updatedAt",
+        "firstName",
+        "lastName",
+        "address",
+        "city",
+        "state",
+        "country",
+        "zip",
+        "phone"
+      ]
+    }
   },
-  "billingProfile": {
-    "updatedAt": 0,
-    "address": "string",
-    "city": "string",
-    "state": "string",
-    "country": "string",
-    "zip": "string"
-  },
-  "shipProfile": {
-    "updatedAt": 0,
-    "firstName": "string",
-    "lastName": "string",
-    "address": "string",
-    "city": "string",
-    "state": "string",
-    "country": "string",
-    "zip": "string",
-    "phone": "string"
-  }
+  "required": [
+    "user",
+    "billingProfile",
+    "shipProfile"
+  ]
 }

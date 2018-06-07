@@ -1,12 +1,44 @@
 {
-  "collection": [
-    {
-      "id": 0,
-      "title": "string",
-      "subtitle": "string",
-      "context": "string",
-      "createdAt": 0
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "collection": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "subtitle",
+          "context",
+          "createdAt"
+        ]
+      },
+      "additionalItems": true
+    },
+    "count": {
+      "type": "integer"
     }
-  ],
-  "count": 0
+  },
+  "required": [
+    "collection",
+    "count"
+  ]
 }

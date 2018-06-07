@@ -1,23 +1,86 @@
 {
-  "collection": [
-    {
-      "category": {
-        "id": 0,
-        "name": "string",
-        "title": "string",
-        "parentCategoryId": 0,
-        "updatedAt": 0
-      },
-      "subCategories": [
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "collection": {
+      "type": "array",
+      "items": [
         {
-          "id": 0,
-          "name": "string",
-          "title": "string",
-          "parentCategoryId": 0,
-          "updatedAt": 0
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "parentCategoryId": {
+                  "type": "integer"
+                },
+                "updatedAt": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "title",
+                "parentCategoryId",
+                "updatedAt"
+              ]
+            },
+            "subCategories": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "parentCategoryId": {
+                      "type": "integer"
+                    },
+                    "updatedAt": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "title",
+                    "parentCategoryId",
+                    "updatedAt"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "category",
+            "subCategories"
+          ]
         }
       ]
+    },
+    "count": {
+      "type": "integer"
     }
-  ],
-  "count": 0
+  },
+  "required": [
+    "collection",
+    "count"
+  ]
 }

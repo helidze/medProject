@@ -1,3 +1,12 @@
 {
-  "shoppingTax": 0
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "shoppingTax": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "shoppingTax"
+  ]
 }
