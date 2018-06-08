@@ -86,7 +86,7 @@
                   "type": "boolean"
                 },
                 "parentCategoryId": {
-                  "type": "integer"
+                  "type": ["integer", "null"]
                 },
                 "updatedAt": {
                   "type": "integer"

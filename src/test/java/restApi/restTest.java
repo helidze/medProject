@@ -260,7 +260,14 @@ public class restTest {
     public void getAllProducts(){
         given().
                 contentType(ContentType.JSON).
-                body("{}").
+                body("{\n" +
+                        "  \"ids\": [\n" +
+                        "    {\n" +
+                        "      \"id\": 1,\n" +
+                        "      \"updatedAt\": 0\n" +
+                        "    }\n" +
+                        "  ]\n" +
+                        "}").
                 post(URI + "/Product/Get").
                 then().
                 assertThat().
