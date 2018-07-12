@@ -11,14 +11,23 @@
             "id": {
               "type": "integer"
             },
+            "title": {
+              "type": "string"
+            },
             "name": {
+              "type": "string"
+            },
+            "nameBrand": {
+              "type": "string"
+            },
+            "nameGeneric": {
               "type": "string"
             },
             "text": {
               "type": "string"
             },
             "cover": {
-              "type": ["string", "null"]
+              "type": "string"
             },
             "isHot": {
               "type": "boolean"
@@ -26,49 +35,16 @@
             "rating": {
               "type": "number"
             },
-            "reviews": {
+            "ratingStar": {
               "type": "array",
               "items": [
                 {
-                  "type": "object",
-                  "properties": {
-                    "user": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        },
-                        "firstName": {
-                          "type": "string"
-                        },
-                        "lastName": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "firstName",
-                        "lastName"
-                      ]
-                    },
-                    "rating": {
-                      "type": "integer"
-                    },
-                    "title": {
-                      "type": "string"
-                    },
-                    "comment": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "user",
-                    "rating",
-                    "title",
-                    "comment"
-                  ]
+                  "type": "integer"
                 }
               ]
+            },
+            "reviewsCount": {
+              "type": "integer"
             },
             "category": {
               "type": "object",
@@ -82,17 +58,20 @@
                 "title": {
                   "type": "string"
                 },
+                "text": {
+                  "type": "string"
+                },
                 "inMenu": {
                   "type": "boolean"
                 },
                 "parentCategoryId": {
-                  "type": ["integer", "null"]
+                  "type": ["integer","null"]
                 },
                 "updatedAt": {
                   "type": "integer"
                 },
                 "seoInformation": {
-                  "type": ["object", "null"],
+                  "type": "object",
                   "properties": {
                     "title": {
                       "type": "string"
@@ -115,6 +94,7 @@
                 "id",
                 "name",
                 "title",
+                "text",
                 "inMenu",
                 "parentCategoryId",
                 "updatedAt",
@@ -131,7 +111,7 @@
                       "type": "integer"
                     },
                     "cover": {
-                      "type": ["string", "null"]
+                      "type": ["string","null"]
                     },
                     "pack": {
                       "type": "number"
@@ -174,7 +154,7 @@
                       ]
                     },
                     "detailsDiscount": {
-                      "type": ["object", "null"],
+                      "type": ["object","null"],
                       "properties": {
                         "pillPriceDiscount": {
                           "type": "integer"
@@ -231,7 +211,7 @@
               ]
             },
             "seoInformation": {
-              "type": ["object", "null"],
+              "type": "object",
               "properties": {
                 "title": {
                   "type": "string"
@@ -255,12 +235,16 @@
           },
           "required": [
             "id",
+            "title",
             "name",
+            "nameBrand",
+            "nameGeneric",
             "text",
             "cover",
             "isHot",
             "rating",
-            "reviews",
+            "ratingStar",
+            "reviewsCount",
             "category",
             "productDetails",
             "activeSubstances",

@@ -139,12 +139,33 @@ public class restTest {
         given().
                 contentType("application/json").
                 header("Cache-Control", "no-cache").
-                body("{}").
+                body("{\n" +
+                        "  \"ids\": [\n" +
+                        "    {\n" +
+                        "      \"id\": 0,\n" +
+                        "      \"updatedAt\": 0\n" +
+                        "    }\n" +
+                        "  ]\n" +
+                        "}").
                 post(URI + "/Blog/Get").
                 then().
                 assertThat().
                 body(matchesJsonSchemaInClasspath("allExistedBlogs.json")).
                 statusCode(200).
+                log().body();
+    }
+
+    @Test
+    public void getBlogTestNegative(){
+        given().
+                contentType("application/json").
+                header("Cache-Control", "no-cache").
+                body("{}").
+                post(URI + "/Blog/Get").
+                then().
+                assertThat().
+                body(containsString("\"code\":\"Invalid\",\"message\":\"Ids field is empty\"")).
+                statusCode(406).
                 log().body();
     }
 
@@ -215,6 +236,18 @@ public class restTest {
     @Test
     public void createOrder(){
         String inputOrderDetails = "{\n" +
+                "  \"card\": {\n" +
+                "    \"firstName\": \"AutoTest\",\n" +
+                "    \"lastName\": \"AutoTest\",\n" +
+                "    \"number\": \"4242424242424242\",\n" +
+                "    \"month\": 12,\n" +
+                "    \"year\": 2033,\n" +
+                "    \"cvv\": \"345\"\n" +
+                "  },\n" +
+                "  \"info\": {\n" +
+                "    \"countryCode\": \"string\",\n" +
+                "    \"stateCode\": \"string\"\n" +
+                "  },\n" +
                 "  \"email\": \"user@adm.min\",\n" +
                 "  \"shipProfile\": {\n" +
                 "    \"firstName\": \"string\",\n" +
@@ -223,6 +256,7 @@ public class restTest {
                 "    \"city\": \"string\",\n" +
                 "    \"state\": \"string\",\n" +
                 "    \"country\": \"string\",\n" +
+                "    \"countryId\": \"string\",\n" +
                 "    \"zip\": \"string\",\n" +
                 "    \"phone\": \"string\"\n" +
                 "  },\n" +
@@ -233,7 +267,7 @@ public class restTest {
                 "    \"country\": \"string\",\n" +
                 "    \"zip\": \"string\"\n" +
                 "  },\n" +
-                "  \"price\": 0.21,\n" +
+                "  \"price\": 20.21,\n" +
                 "  \"products\": [\n" +
                 "    {\n" +
                 "      \"productId\": 1,\n" +
@@ -282,14 +316,15 @@ public class restTest {
         given().
                 contentType(ContentType.JSON).
                 body("{\n" +
-                        "  \"id\": 1\n" +
+                        "  \"id\": -1,\n" +
+                        "  \"name\": \"amoxil-amoxicillin-amoxicillin\"\n" +
                         "}").
                 when().
                 post(URI + "/Product/GetOne").
                 then().
                 assertThat().
                 statusCode(200).
-               body(matchesJsonSchemaInClasspath("getProductById.json")).
+                body(matchesJsonSchemaInClasspath("getProductById.json")).
                 log().body();
     }
 
