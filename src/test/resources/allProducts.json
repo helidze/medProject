@@ -184,8 +184,7 @@
                     "packType",
                     "form",
                     "pillPrice",
-                    "strength",
-                    "detailsDiscount"
+                    "strength"
                   ]
                 }
               ]

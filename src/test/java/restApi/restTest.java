@@ -179,7 +179,7 @@ public class restTest {
                 then().
                 assertThat().
                 statusCode(406).
-                assertThat().body(containsString("{\"code\":\"NotFound\",\"message\":\"Get Blog Error. Blog not exist with id -1\"}")).
+                assertThat().body(containsString("{\"code\":\"Invalid\",\"message\":\"The field Id must be between 1 and 2147483647.\"}")).
                 log().all();
     }
 
