@@ -68,7 +68,7 @@
               "type": "integer"
             },
             "seoInformation": {
-              "type": ["object","null"],
+              "type": "object",
               "properties": {
                 "title": {
                   "type": "string"
@@ -110,17 +110,8 @@
                 "cover": {
                   "type": ["string","null"]
                 },
-                "pack": {
-                  "type": "number"
-                },
-                "packType": {
-                  "type": "string"
-                },
                 "form": {
                   "type": "string"
-                },
-                "pillPrice": {
-                  "type": "number"
                 },
                 "strength": {
                   "type": "array",
@@ -150,38 +141,45 @@
                     }
                   ]
                 },
-                "detailsDiscount": {
-                  "type": ["object","null"],
-                  "properties": {
-                    "pillPriceDiscount": {
-                      "type": "integer"
-                    },
-                    "finishAt": {
-                      "type": "integer"
-                    },
-                    "updatedAt": {
-                      "type": "integer"
-                    },
-                    "id": {
-                      "type": "integer"
+                "packages": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "pillPrice": {
+                          "type": "number"
+                        },
+                        "pillCount": {
+                          "type": "integer"
+                        },
+                        "price": {
+                          "type": "number"
+                        },
+                        "originalPrice": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "pillPrice",
+                        "pillCount",
+                        "price",
+                        "originalPrice"
+                      ]
                     }
-                  },
-                  "required": [
-                    "pillPriceDiscount",
-                    "finishAt",
-                    "updatedAt",
-                    "id"
                   ]
                 }
               },
               "required": [
                 "id",
                 "cover",
-                "pack",
-                "packType",
                 "form",
-                "pillPrice",
-                "strength"
+                "strength",
+                "packages"
               ]
             }
           ]
@@ -206,8 +204,52 @@
             }
           ]
         },
+        "discount": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "productId": {
+                  "type": "integer"
+                },
+                "giftPillCount": {
+                  "type": "integer"
+                },
+                "discountCondition": {
+                  "type": "object",
+                  "properties": {
+                    "productDetailsId": {
+                      "type": "integer"
+                    },
+                    "productDetailsPackageId": {
+                      "type": "integer"
+                    },
+                    "packagePillCount": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "productDetailsId",
+                    "productDetailsPackageId",
+                    "packagePillCount"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "productId",
+                "giftPillCount",
+                "discountCondition"
+              ]
+            }
+          ]
+        },
         "seoInformation": {
-          "type": ["object","null"],
+          "type": "object",
           "properties": {
             "title": {
               "type": "string"
@@ -244,6 +286,7 @@
         "category",
         "productDetails",
         "activeSubstances",
+        "discount",
         "seoInformation",
         "updatedAt"
       ]

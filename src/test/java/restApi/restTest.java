@@ -242,23 +242,23 @@ public class restTest {
                 "    \"number\": \"4242424242424242\",\n" +
                 "    \"month\": 12,\n" +
                 "    \"year\": 2033,\n" +
-                "    \"cvv\": \"345\"\n" +
+                "    \"cvv\": \"232\"\n" +
                 "  },\n" +
                 "  \"info\": {\n" +
-                "    \"countryCode\": \"string\",\n" +
-                "    \"stateCode\": \"string\"\n" +
+                "    \"countryCode\": \"2344\",\n" +
+                "    \"stateCode\": \"2344\"\n" +
                 "  },\n" +
                 "  \"email\": \"user@adm.min\",\n" +
                 "  \"shipProfile\": {\n" +
-                "    \"firstName\": \"string\",\n" +
-                "    \"lastName\": \"string\",\n" +
-                "    \"address\": \"string\",\n" +
-                "    \"city\": \"string\",\n" +
+                "    \"firstName\": \"name\",\n" +
+                "    \"lastName\": \"name\",\n" +
+                "    \"address\": \"address\",\n" +
+                "    \"city\": \"Kiev\",\n" +
                 "    \"state\": \"string\",\n" +
-                "    \"country\": \"string\",\n" +
-                "    \"countryId\": \"string\",\n" +
-                "    \"zip\": \"string\",\n" +
-                "    \"phone\": \"string\"\n" +
+                "    \"country\": \"Ukraine\",\n" +
+                "    \"countryId\": \"1\",\n" +
+                "    \"zip\": \"212\",\n" +
+                "    \"phone\": \"221212\"\n" +
                 "  },\n" +
                 "  \"billingProfile\": {\n" +
                 "    \"address\": \"string\",\n" +
@@ -267,13 +267,18 @@ public class restTest {
                 "    \"country\": \"string\",\n" +
                 "    \"zip\": \"string\"\n" +
                 "  },\n" +
-                "  \"price\": 20.21,\n" +
+                "  \"price\": 20.292236,\n" +
                 "  \"products\": [\n" +
                 "    {\n" +
                 "      \"productId\": 1,\n" +
                 "      \"productDetailsId\": 1,\n" +
-                "      \"packCount\": 1\n" +
+                "      \"packageId\": 1470,\n" +
+                "      \"discountId\": 0,\n" +
+                "      \"packageCount\": 1\n" +
                 "    }\n" +
+                "  ],\n" +
+                "  \"orderDiscountIds\": [\n" +
+                "    0\n" +
                 "  ]\n" +
                 "}";
         given().
@@ -284,7 +289,7 @@ public class restTest {
                 .post(URI + "/Order/CreateOrder")
                 .then().
                 assertThat().
-                statusCode(200).
+
                 body(matchesJsonSchemaInClasspath("newOrder.json")).
                 log().body();
 

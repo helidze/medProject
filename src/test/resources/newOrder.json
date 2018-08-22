@@ -2,156 +2,177 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "token": {
-      "type": ["string","null"]
-    },
-    "model": {
+    "card": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "orderNumber": {
-          "type": "integer"
-        },
-        "createdAt": {
-          "type": "integer"
-        },
-        "shipTax": {
-          "type": "integer"
-        },
-        "price": {
-          "type": "number"
-        },
-        "orderStatus": {
+        "firstName": {
           "type": "string"
         },
-        "shipProfile": {
-          "type": "object",
-          "properties": {
-            "firstName": {
-              "type": "string"
-            },
-            "lastName": {
-              "type": "string"
-            },
-            "address": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
-            },
-            "state": {
-              "type": "string"
-            },
-            "country": {
-              "type": "string"
-            },
-            "zip": {
-              "type": "string"
-            },
-            "phone": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "firstName",
-            "lastName",
-            "address",
-            "city",
-            "state",
-            "country",
-            "zip",
-            "phone"
-          ]
+        "lastName": {
+          "type": "string"
         },
-        "billingProfile": {
-          "type": "object",
-          "properties": {
-            "address": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
-            },
-            "state": {
-              "type": "string"
-            },
-            "country": {
-              "type": "string"
-            },
-            "zip": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "address",
-            "city",
-            "state",
-            "country",
-            "zip"
-          ]
+        "number": {
+          "type": "string"
         },
-        "orderProducts": {
-          "type": "array",
-          "items": [
-            {
-              "type": "object",
-              "properties": {
-                "product": {
-                  "type": "string"
-                },
-                "category": {
-                  "type": "string"
-                },
-                "price": {
-                  "type": "number"
-                },
-                "strength": {
-                  "type": "string"
-                },
-                "packCount": {
-                  "type": "integer"
-                },
-                "pack": {
-                  "type": "number"
-                },
-                "packType": {
-                  "type": "string"
-                },
-                "form": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "product",
-                "category",
-                "price",
-                "strength",
-                "packCount",
-                "pack",
-                "packType",
-                "form"
-              ]
-            }
-          ]
+        "month": {
+          "type": "integer"
+        },
+        "year": {
+          "type": "integer"
+        },
+        "cvv": {
+          "type": "string"
         }
       },
       "required": [
-        "id",
-        "orderNumber",
-        "createdAt",
-        "shipTax",
-        "price",
-        "orderStatus",
-        "shipProfile",
-        "billingProfile",
-        "orderProducts"
+        "firstName",
+        "lastName",
+        "number",
+        "month",
+        "year",
+        "cvv"
+      ]
+    },
+    "info": {
+      "type": "object",
+      "properties": {
+        "countryCode": {
+          "type": "string"
+        },
+        "stateCode": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "countryCode",
+        "stateCode"
+      ]
+    },
+    "email": {
+      "type": "string"
+    },
+    "shipProfile": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "countryId": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "firstName",
+        "lastName",
+        "address",
+        "city",
+        "state",
+        "country",
+        "countryId",
+        "zip",
+        "phone"
+      ]
+    },
+    "billingProfile": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "address",
+        "city",
+        "state",
+        "country",
+        "zip"
+      ]
+    },
+    "price": {
+      "type": "integer"
+    },
+    "products": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "productId": {
+              "type": "integer"
+            },
+            "productDetailsId": {
+              "type": "integer"
+            },
+            "packageId": {
+              "type": "integer"
+            },
+            "discountId": {
+              "type": "integer"
+            },
+            "packageCount": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "productId",
+            "productDetailsId",
+            "packageId",
+            "discountId",
+            "packageCount"
+          ]
+        }
+      ]
+    },
+    "orderDiscountIds": {
+      "type": "array",
+      "items": [
+        {
+          "type": "integer"
+        }
       ]
     }
   },
   "required": [
-    "token",
-    "model"
+    "card",
+    "info",
+    "email",
+    "shipProfile",
+    "billingProfile",
+    "price",
+    "products",
+    "orderDiscountIds"
   ]
 }
